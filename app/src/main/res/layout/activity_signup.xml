@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteish"
+    tools:context=".ActivitySignup">
+
+    <include
+        android:id="@+id/register_toolbar"
+        layout="@layout/app_bar_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="673dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_toolbar">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:srcCompat="@drawable/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/darkblue"
+                android:paddingStart="-20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="-20dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/whiteuser" />
+
+            <EditText
+                android:id="@+id/signup_name_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/silver"
+                android:ems="10"
+                android:hint="Ad Soyad"
+                android:inputType="textPersonName"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/darkblue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/darkblue"
+                android:paddingStart="-20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="-20dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/whitemail" />
+
+            <EditText
+                android:id="@+id/signup_email_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/silver"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/darkblue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/darkblue"
+                android:paddingStart="-20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="-20dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/whitephone" />
+
+            <EditText
+                android:id="@+id/signup_phone_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/silver"
+                android:ems="10"
+                android:hint="Telefon Numarası"
+                android:inputType="textPersonName"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/darkblue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/darkblue"
+                android:paddingStart="-20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="-20dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/whitecalender" />
+
+            <EditText
+                android:id="@+id/signup_date_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/silver"
+                android:ems="10"
+                android:hint="Doğum Tarihi"
+                android:inputType="datetime"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/darkblue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/darkblue"
+                android:paddingStart="-20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="-20dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/whitepassword" />
+
+            <EditText
+                android:id="@+id/signup_password_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/silver"
+                android:ems="10"
+                android:hint="Şifre"
+                android:inputType="textPassword"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/darkblue" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/signup_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/darkblue"
+                android:text="Kayıt Ol"
+                android:textColor="@color/silver"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/signup_login_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hesabın var mı? Giriş yap"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/darkblue"
+                android:textSize="18sp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
