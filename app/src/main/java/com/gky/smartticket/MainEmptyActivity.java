@@ -3,7 +3,9 @@ package com.gky.smartticket;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,8 +17,9 @@ import java.io.InputStreamReader;
 
 public class MainEmptyActivity extends Activity {
 
+    public static final String MY_PREFS_NAME="MyPrefsFile";
     Intent intent;
-    private String email,status;
+    private String email;
 
 
     @Override
@@ -24,10 +27,11 @@ public class MainEmptyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_empty);
 
-        loadStatus2();
+        control();
 
     }
 
+    /*
     public void loadStatus(){
         FileInputStream fileInputStream=null;
         try {
@@ -72,7 +76,9 @@ public class MainEmptyActivity extends Activity {
             }
         }
     }
+    */
 
+    /*
     public void loadStatus2(){
         FileInputStream fileInputStream=null;
         try{
@@ -123,6 +129,34 @@ public class MainEmptyActivity extends Activity {
                     Log.e("IOException2","IO Exception when closing stream"+e.toString());
                 }
             }
+        }
+    }
+    */
+
+    public void control(){
+        try{
+            SharedPreferences sp=getSharedPreferences(MY_PREFS_NAME,Context.MODE_PRIVATE);
+            String email=sp.getString("email","0");
+            //String status=sp.getString("status","0");
+            Log.d("MainEmpty140",email);
+            if(email.isEmpty() || email.equals("0")){
+                intent=new Intent(MainEmptyActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            else{
+                intent=new Intent(MainEmptyActivity.this,MainActivity.class);
+                intent.putExtra("email",email);
+                startActivity(intent);
+                finish();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e("MainEmptyActivity155","Error:"+e.getMessage());
+            intent=new Intent(MainEmptyActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

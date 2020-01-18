@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import java.io.OutputStreamWriter;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static final String MY_PREFS_NAME="MyPrefsFile";
     EditText login_email_et;
     Button login_button;
     Intent intent;
@@ -37,11 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String data=login_email_et.getText().toString();
-                data=data+":"+"1";
-                storeCredentials(data);
+                String email=login_email_et.getText().toString();
+                storeCredentials(email);
                 intent=new Intent(LoginActivity.this,MainActivity.class);
+                intent.putExtra("email",email);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -55,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void storeCredentials(String email){
+        SharedPreferences.Editor editor=getSharedPreferences(MY_PREFS_NAME,Context.MODE_PRIVATE).edit();
+        editor.putString("email",email);
+        editor.apply();
+    }
+    /*
     public void loadStatus(){
         FileInputStream fileInputStream=null;
         try {
@@ -87,16 +96,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-
+    */
+    /*
     private void storeCredentials(String data){
         try{
             OutputStreamWriter outputStreamWriter=new OutputStreamWriter(openFileOutput("config.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
-            Log.e("Success","Data write successfully completed");
+            Log.e("Login95","Data write successfully completed");
             outputStreamWriter.close();
         }catch (IOException e){
-            Log.e("Exception", "File write failed :"+e.toString());
+            Log.e("Login98", "File write failed :"+e.toString());
         }
 
     }
+    */
 }

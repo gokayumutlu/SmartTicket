@@ -3,22 +3,33 @@ package com.gky.smartticket;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TableLayout;
 import android.widget.TextView;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 import java.io.FileInputStream;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String MY_PREFS_NAME="MyPrefsFile";
     Intent intent;
     TextView main_tv;
+    String email;
+    private TableLayout tableLayout;
+    private AppBarLayout appBarLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
         if(toolbar!=null){
             setSupportActionBar(toolbar);
         }
-
-        main_tv=findViewById(R.id.main_tv);
+        email=getIntent().getStringExtra("email");
+        Log.d("MainActivity35","email: "+email);
 
         Bundle b=getIntent().getExtras();
         String data=b.getString("data");
-        main_tv.setText(data);
+        //main_tv.setText(data);
     }
 
     @Override
@@ -49,12 +60,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.item_logout:
                 Log.d("LogoutItem","Item logout selected");
-                try{
-                    FileInputStream fileInputStream=new FileInputStream("config.txt");
-                    fileInputStream.close();
-                }catch (Exception e){
-                    Log.e("ItemLogoutError","Logout item selected but error occured"+e.toString());
-                }
+                SharedPreferences.Editor editor=getSharedPreferences(MY_PREFS_NAME,Context.MODE_PRIVATE).edit();
+                editor.putString("email","0");
+                editor.apply();
 
                 intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
