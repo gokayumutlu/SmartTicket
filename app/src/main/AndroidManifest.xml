@@ -11,21 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Tickets"></activity>
-        <activity
-            android:name=".MainEmptyActivity"
-            android:theme="@android:style/Theme.NoDisplay">
-
-        </activity>
-        <activity android:name=".ActivitySignup">
+        <activity android:name=".TrainActivity"></activity>
+        <activity android:name=".BusActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MidActivity" />
+        <activity android:name=".Tickets" />
+        <activity
+            android:name=".MainEmptyActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <activity android:name=".ActivitySignup">
+
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:usesCleartextTraffic="true" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

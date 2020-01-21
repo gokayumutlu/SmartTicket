@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/whiteish"
-    tools:context=".MainActivity">
+    tools:context=".MidActivity">
 
     <include
-        android:id="@+id/register_toolbar"
+        android:id="@+id/mid_toolbar"
         layout="@layout/app_bar_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -18,69 +18,89 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/spacelinear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/mid_toolbar"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/customborder"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spacelinear">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/customborderdark"
+            android:gravity="center"
+            android:padding="25dp"
+            android:text="Biletlerim"
+            android:textColor="@color/darkblue"
+            android:textSize="32sp" />
 
         <LinearLayout
+            android:id="@+id/mid_linear_bus"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/customborder"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/customborderdark"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/bus32" />
+                app:srcCompat="@drawable/bus64" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingTop="3dp"
-                android:text="Otobüs Bileti"
+                android:gravity="center_vertical"
+                android:text="Otobüs Bileti Al"
                 android:textColor="@color/darkblue"
-                android:textSize="18sp" />
+                android:textSize="28sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/mid_linear_train"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/customborder"
+            android:background="@drawable/customborderdark"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/imageView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/train32" />
+                app:srcCompat="@drawable/train64" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingTop="3dp"
-                android:text="Tren Bileti"
+                android:gravity="center_vertical"
+                android:text="Tren Bileti Al"
                 android:textColor="@color/darkblue"
-                android:textSize="18sp" />
+                android:textSize="28sp" />
         </LinearLayout>
-
     </LinearLayout>
 
 

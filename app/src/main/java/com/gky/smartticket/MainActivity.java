@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.google.android.material.appbar.AppBarLayout;
 
 import java.io.FileInputStream;
+import java.security.spec.ECField;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,13 +41,16 @@ public class MainActivity extends AppCompatActivity {
         if(toolbar!=null){
             setSupportActionBar(toolbar);
         }
-        email=getIntent().getStringExtra("email");
-        Log.d("MainActivity35","email: "+email);
+        try{
+            email=getIntent().getStringExtra("email");
+            Log.d("MainActivity35","email: "+email);
+        }catch (Exception e){
+            Log.e("mainspemailerror","MainActivity Shared Preference Email Error!"+e.getMessage());
+        }
 
-        Bundle b=getIntent().getExtras();
-        String data=b.getString("data");
-        //main_tv.setText(data);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
