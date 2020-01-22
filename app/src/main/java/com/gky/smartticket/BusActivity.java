@@ -5,23 +5,54 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 public class BusActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     private TextView busDate;
+    private Button busTodayButton,busTomorrowButton,busSearchButton;
+    //private BusCity city;
+    Spinner cityFromSpinner,cityToSpinner;
+    HashMap<String,Integer> busCities=new HashMap<>();
+    List<String> keys;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
 
+        cityFromSpinner=findViewById(R.id.bus_from_spinner);
+        cityToSpinner=findViewById(R.id.bus_to_spinner);
         Toolbar toolbar=findViewById(R.id.bus_toolbar);
+        busDate=findViewById(R.id.bus_date_tv);
+        busTodayButton=findViewById(R.id.bus_date_today_button);
+        busTomorrowButton=findViewById(R.id.bus_date_tomorrow_button);
+        busSearchButton=findViewById(R.id.bus_search_button);
+
+        Calendar calendar=Calendar.getInstance();
+        final int day=calendar.get(Calendar.DAY_OF_MONTH);
+        final int month=calendar.get(Calendar.MONTH);
+        final int year=calendar.get(Calendar.YEAR);
+
+        putCity();
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.my_spinner_textview,keys);
+        adapter.setDropDownViewResource(R.layout.my_spinner_textview);
+        cityFromSpinner.setAdapter(adapter);
+        cityToSpinner.setAdapter(adapter);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,12 +62,31 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
             }
         });
 
-        busDate=findViewById(R.id.bus_date_tv);
-
         findViewById(R.id.bus_datepicker_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePickerDialog();
+            }
+        });
+
+        busTodayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDate(year,month,day);
+            }
+        });
+
+        busTomorrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDate(year,month,day+1);
+            }
+        });
+
+        busSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next();
             }
         });
     }
@@ -54,6 +104,10 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        setDate(year,month,dayOfMonth);
+    }
+
+    public void setDate(int year,int month,int dayOfMonth){
         String monthtext="";
         switch (month){
             case 0: monthtext="Ocak"; break;
@@ -75,4 +129,41 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
         busDate.setText(date);
         busDate.setVisibility(View.VISIBLE);
     }
+
+
+    public void putCity(){
+        busCities.put("İstanbul-Esenler",2);
+        busCities.put("İstanbul-Harem",20);
+        busCities.put("Kocaeli-İzmit Otogarı",21);
+        busCities.put("Kocaeli-Gebze Otogarı",22);
+        busCities.put("Ankara-Aşti",23);
+        busCities.put("Ankara-Çubuk Otogarı",24);
+        busCities.put("İzmir-Şehirlerarası Otogarı",25);
+        busCities.put("Antalya-Şehir Otogarı",26);
+        busCities.put("Trabzon-Şehirlerarası Otogarı",27);
+        busCities.put("Erzurum-Şehirlerarası Otogarı",28);
+        busCities.put("Gaziantep-Otogar",29);
+        busCities.put("Eskişehir-Şehirlerarası Otobüs Terminali",30);
+
+        keys=new ArrayList<>(busCities.keySet());
+
+
+
+    }
+
+    public void next(){
+        String text=cityFromSpinner.getSelectedItem().toString();
+        String text2=cityToSpinner.getSelectedItem().toString();
+        Log.d("BusSelectedCities","From: "+text+"/To: "+text2);
+
+        try {
+            int id=busCities.get(text);
+            int id2=busCities.get(text2);
+            Log.d("BusCityIDs","Id1= "+id+" / Id2= "+id2);
+        }catch (Exception e){
+            Log.e("BGetIdFromSpinnerError","Cant get id from spinner Bus");
+        }
+
+    }
+
 }

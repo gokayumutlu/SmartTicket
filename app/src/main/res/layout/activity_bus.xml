@@ -71,11 +71,11 @@
 
             <Spinner
                 android:id="@+id/bus_from_spinner"
-                android:layout_width="250dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
                 android:backgroundTint="@color/darkblue"
+                android:gravity="center"
                 android:spinnerMode="dropdown" />
 
             <ImageView
@@ -98,11 +98,11 @@
 
             <Spinner
                 android:id="@+id/bus_to_spinner"
-                android:layout_width="250dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/darkblue" />
+                android:backgroundTint="@color/darkblue"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -164,7 +164,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/bus_search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
