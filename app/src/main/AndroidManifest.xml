@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".TrainActivity"></activity>
+        <activity android:name=".TicketListActivity"></activity>
+        <activity android:name=".TrainActivity" />
         <activity android:name=".BusActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +25,7 @@
         <activity
             android:name=".MainEmptyActivity"
             android:theme="@android:style/Theme.NoDisplay" />
-        <activity android:name=".ActivitySignup">
-
-        </activity>
+        <activity android:name=".ActivitySignup"></activity>
         <activity
             android:name=".LoginActivity"
             android:usesCleartextTraffic="true" />

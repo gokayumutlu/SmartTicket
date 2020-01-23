@@ -3,6 +3,7 @@ package com.gky.smartticket;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +20,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class BusActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class BusActivity extends ListActivity implements DatePickerDialog.OnDateSetListener{
 
     private TextView busDate;
     private Button busTodayButton,busTomorrowButton,busSearchButton;
@@ -27,6 +28,7 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
     Spinner cityFromSpinner,cityToSpinner;
     HashMap<String,Integer> busCities=new HashMap<>();
     List<String> keys;
+    public String cDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,10 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String sYear= String.valueOf(year);
+        String sMonth=String.valueOf(month);
+        String sDayOfMonth=String.valueOf(dayOfMonth);
+        cDate=sYear+"-"+sMonth+"-"+sDayOfMonth;
         setDate(year,month,dayOfMonth);
     }
 
@@ -152,18 +158,22 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
     }
 
     public void next(){
-        String text=cityFromSpinner.getSelectedItem().toString();
-        String text2=cityToSpinner.getSelectedItem().toString();
-        Log.d("BusSelectedCities","From: "+text+"/To: "+text2);
+        String fromCity=cityFromSpinner.getSelectedItem().toString();
+        String toCity=cityToSpinner.getSelectedItem().toString();
+        Log.d("BusSelectedCities","From: "+fromCity+"/To: "+toCity);
 
-        try {
-            int id=busCities.get(text);
-            int id2=busCities.get(text2);
-            Log.d("BusCityIDs","Id1= "+id+" / Id2= "+id2);
-        }catch (Exception e){
-            Log.e("BGetIdFromSpinnerError","Cant get id from spinner Bus");
-        }
+        int ifromId=busCities.get(fromCity);
+        int itoId=busCities.get(toCity);
+        Log.d("BusCityIDs","Id1= "+ifromId+" / Id2= "+itoId);
 
+        String fromId=Integer.toString(ifromId);
+        String toId=Integer.toString(itoId);
+
+        ListAdapt listAdapt=new ListAdapt(this);
+        setListAdapter(listAdapt);
+
+        TicketAra ticketAra=new TicketAra(fromId,toId,cDate,listAdapt);
+        ticketAra.func(this);
     }
 
 }

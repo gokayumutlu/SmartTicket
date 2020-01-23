@@ -22,6 +22,12 @@ public interface Api {
                         @Query("sifre")String user_password);
 
 
+    @GET("getbustickets")
+    Call<TicketData> getBusTickets(@Query("fromId") String fromId,
+                                   @Query("toId") String toId,
+                                   @Query("date") String date);
+
+
 
 
 }
