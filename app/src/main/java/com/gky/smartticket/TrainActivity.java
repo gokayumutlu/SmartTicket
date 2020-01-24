@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -31,10 +32,18 @@ public class TrainActivity extends AppCompatActivity implements DatePickerDialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_train);
 
+        cityFromSpinner=findViewById(R.id.train_from_spinner);
+        cityToSpinner=findViewById(R.id.train_to_spinner);
+
         Calendar calendar=Calendar.getInstance();
         final int day=calendar.get(Calendar.DAY_OF_MONTH);
         final int month=calendar.get(Calendar.MONTH);
         final int year=calendar.get(Calendar.YEAR);
+
+        putCity();
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.my_spinner_textview,keys);
+        cityFromSpinner.setAdapter(adapter);
+        cityToSpinner.setAdapter(adapter);
 
         Toolbar toolbar=findViewById(R.id.train_toolbar);
         cityFromSpinner=findViewById(R.id.train_from_spinner);

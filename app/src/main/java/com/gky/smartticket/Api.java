@@ -1,5 +1,8 @@
 package com.gky.smartticket;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -22,10 +25,25 @@ public interface Api {
                         @Query("sifre")String user_password);
 
 
+    /*
     @GET("getbustickets")
     Call<TicketData> getBusTickets(@Query("fromId") String fromId,
                                    @Query("toId") String toId,
                                    @Query("date") String date);
+
+    @GET("getbustickets")
+    Call<TicketData2> getBusTickets2(@Query("fromId") String fromId,
+                                          @Query("toId") String toId,
+                                          @Query("date") String date);
+    */
+    @GET("getmytickets")
+    Call<List<MyTickets>> getMyTickets(@Query("email") String email);
+
+
+    @GET("getbustickets")
+    Call<List<Ticket2>> getBusTickets3(@Query("fromId") String fromId,
+                                       @Query("toId") String toId,
+                                       @Query("date") String date);
 
 
 

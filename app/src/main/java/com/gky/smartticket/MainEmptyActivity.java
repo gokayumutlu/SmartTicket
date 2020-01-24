@@ -146,7 +146,7 @@ public class MainEmptyActivity extends Activity {
             }
 
             else{
-                intent=new Intent(MainEmptyActivity.this,MainActivity.class);
+                intent=new Intent(MainEmptyActivity.this,MidActivity.class);
                 intent.putExtra("email",email);
                 startActivity(intent);
                 finish();

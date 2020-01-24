@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
@@ -20,15 +21,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class BusActivity extends ListActivity implements DatePickerDialog.OnDateSetListener{
+public class BusActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     private TextView busDate;
     private Button busTodayButton,busTomorrowButton,busSearchButton;
-    //private BusCity city;
     Spinner cityFromSpinner,cityToSpinner;
     HashMap<String,Integer> busCities=new HashMap<>();
     List<String> keys;
-    public String cDate;
+    public String queryDate="0";
+    public String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,9 +108,10 @@ public class BusActivity extends ListActivity implements DatePickerDialog.OnDate
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String sYear= String.valueOf(year);
-        String sMonth=String.valueOf(month);
+        String sMonth=String.valueOf(month+1);
         String sDayOfMonth=String.valueOf(dayOfMonth);
-        cDate=sYear+"-"+sMonth+"-"+sDayOfMonth;
+        queryDate=sYear+"-"+sMonth+"-"+sDayOfMonth;
+        Log.d("BusActivity113","onDateSet year: "+sYear+" month: "+sMonth+" day: "+sDayOfMonth+" ??->"+month);
         setDate(year,month,dayOfMonth);
     }
 
@@ -130,8 +132,10 @@ public class BusActivity extends ListActivity implements DatePickerDialog.OnDate
             case 11: monthtext="Aralık"; break;
             default: monthtext="Hata"; break;
         }
-
-        String date=dayOfMonth+"/"+monthtext+"/"+year;
+        if(queryDate.equals("0")){
+            queryDate=String.valueOf(year)+"-"+String.valueOf(month+1)+"-"+String.valueOf(dayOfMonth);
+        }
+        date=dayOfMonth+"/"+monthtext+"/"+year;
         busDate.setText(date);
         busDate.setVisibility(View.VISIBLE);
     }
@@ -169,11 +173,18 @@ public class BusActivity extends ListActivity implements DatePickerDialog.OnDate
         String fromId=Integer.toString(ifromId);
         String toId=Integer.toString(itoId);
 
-        ListAdapt listAdapt=new ListAdapt(this);
-        setListAdapter(listAdapt);
+        Intent intent=new Intent(BusActivity.this,BusTicketsActivity.class);
+        intent.putExtra("borttv","Otobüs Bileti");
+        intent.putExtra("date",date);
+        intent.putExtra("fromcity",fromCity);
+        intent.putExtra("tocity",toCity);
 
-        TicketAra ticketAra=new TicketAra(fromId,toId,cDate,listAdapt);
-        ticketAra.func(this);
+        intent.putExtra("querydate",queryDate);
+        intent.putExtra("qfromid",fromId);
+        intent.putExtra("qtoid",toId);
+        startActivity(intent);
+
+
     }
 
 }

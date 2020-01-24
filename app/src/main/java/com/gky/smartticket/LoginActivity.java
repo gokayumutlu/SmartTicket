@@ -50,8 +50,11 @@ public class LoginActivity extends AppCompatActivity {
                 String email=login_email_et.getText().toString();
                 String password=login_password_et.getText().toString();
                 //storeCredentials(email); buradan kaldırılıp başarılı giriş yapıldıktan sonra kaydedilmesi için girisYap() ın içine konuldu
-                girisYap(email,password);
-
+                //girisYap(email,password);
+                storeCredentials(email);
+                intent=new Intent(LoginActivity.this,MidActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -105,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         URL url=new URL();
-        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(url.getLocalUrl()).addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit=new Retrofit.Builder().client(client).baseUrl(url.getBaseUrl()).addConverterFactory(GsonConverterFactory.create()).build();
         Api api=retrofit.create(Api.class);
         Call<User> call=api.girisYap(email,password);
         call.enqueue(new Callback<User>() {

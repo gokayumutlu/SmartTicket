@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/register_toolbar"
-        layout="@layout/app_bar_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/register_toolbar"
+    layout="@layout/app_bar_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

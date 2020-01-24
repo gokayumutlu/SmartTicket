@@ -124,7 +124,7 @@ public class ActivitySignup extends AppCompatActivity {
                     Log.d("submitonressucc","Başarılı!!");
                     Log.d("submitonressucc2","Response Message: "+response.message());
                     Log.d("submitonressucc3","Response Code: "+response.code());
-                    intent=new Intent(ActivitySignup.this,MainActivity.class);
+                    intent=new Intent(ActivitySignup.this,MidActivity.class);
                     //intent.putExtra("email",email); email i sharedpreference tan al
                     startActivity(intent);
                     finish();
