@@ -26,6 +26,7 @@ public class MainEmptyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_empty);
+        Log.d("MainEmptyActivity", "onCreate: ");
 
         control();
 

@@ -31,6 +31,7 @@ public class TrainActivity extends AppCompatActivity implements DatePickerDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_train);
+        Log.d("TrainActivity", "onCreate: ");
 
         cityFromSpinner=findViewById(R.id.train_from_spinner);
         cityToSpinner=findViewById(R.id.train_to_spinner);

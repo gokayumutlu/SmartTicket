@@ -42,6 +42,7 @@ public class ActivitySignup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        Log.d("SignupActivity", "onCreate: ");
 
         signup_email=findViewById(R.id.signup_email_et);
         signup_birthofdate=findViewById(R.id.signup_date_et);

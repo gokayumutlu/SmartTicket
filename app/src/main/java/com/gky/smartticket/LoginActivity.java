@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.d("LoginActivity", "onCreate: ");
 
         login_email_et=findViewById(R.id.login_email_et);
         login_password_et=findViewById(R.id.login_password_et);
@@ -49,12 +50,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email=login_email_et.getText().toString();
                 String password=login_password_et.getText().toString();
-                //storeCredentials(email); buradan kaldırılıp başarılı giriş yapıldıktan sonra kaydedilmesi için girisYap() ın içine konuldu
-                //girisYap(email,password);
-                storeCredentials(email);
-                intent=new Intent(LoginActivity.this,MidActivity.class);
-                startActivity(intent);
-                finish();
+                if(email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Lütfen bilgilerinizi doğru girin",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Giriş Başarılı",Toast.LENGTH_SHORT).show();
+                    //storeCredentials(email); buradan kaldırılıp başarılı giriş yapıldıktan sonra kaydedilmesi için girisYap() ın içine konuldu
+                    //girisYap(email,password);
+                    storeCredentials(email);
+                    intent=new Intent(LoginActivity.this,MidActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 

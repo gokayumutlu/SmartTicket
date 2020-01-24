@@ -25,12 +25,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mytickets_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tickets_recyclerview2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tickets_recyclerview"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

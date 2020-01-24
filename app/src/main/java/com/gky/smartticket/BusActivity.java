@@ -35,6 +35,7 @@ public class BusActivity extends AppCompatActivity implements DatePickerDialog.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
+        Log.d("BusActivity", "onCreate: ");
 
         cityFromSpinner=findViewById(R.id.bus_from_spinner);
         cityToSpinner=findViewById(R.id.bus_to_spinner);

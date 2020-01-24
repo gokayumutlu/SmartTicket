@@ -28,9 +28,10 @@ public class MidActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mid);
+        Log.d("MidActivity", "onCreate: ");
 
         SharedPreferences sharedPreferences=getSharedPreferences(MY_PREFS_NAME,MODE_PRIVATE);
-        String email=sharedPreferences.getString("email","default");
+        final String email=sharedPreferences.getString("email","default");
         Log.d("MidActivityEmail","Email: "+email);
         midLinearBus=findViewById(R.id.mid_linear_bus);
         midLinearTrain=findViewById(R.id.mid_linear_train);
@@ -40,7 +41,7 @@ public class MidActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
         try{
-            email=getIntent().getStringExtra("email");
+            //email=getIntent().getStringExtra("email");
             Log.d("MidActivity33","email: "+email);
         }catch (Exception e){
             Log.e("mainspemailerror","MainActivity Shared Preference Email Error!"+e.getMessage());
@@ -50,7 +51,7 @@ public class MidActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MidActivity.this,MyTicketsActivity.class);
-                intent.putExtra("email","user1@hotmail.com");
+                intent.putExtra("email",email);
                 startActivity(intent);
             }
         });

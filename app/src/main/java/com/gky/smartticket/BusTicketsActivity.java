@@ -31,6 +31,7 @@ public class BusTicketsActivity extends AppCompatActivity implements BusTicketsA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_tickets);
+        Log.d("BusTicketsActivity", "onCreate: ");
 
         Toolbar toolbar=findViewById(R.id.bus_tickets_toolbar);
         Intent intent=getIntent();
@@ -59,7 +60,7 @@ public class BusTicketsActivity extends AppCompatActivity implements BusTicketsA
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(BusTicketsActivity.this,MidActivity.class);
+                Intent intent=new Intent(BusTicketsActivity.this,BusActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -99,12 +100,14 @@ public class BusTicketsActivity extends AppCompatActivity implements BusTicketsA
 
     @Override
     public void onTicketClick(final int position) {
+        Log.d("BusTicketsActivity","onTicketClick");
         final AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("Onayla");
-        builder.setMessage("Onaylıyor musun?");
+        builder.setMessage("Onaylıyor musun?\n Saat: "+list.get(position).getDepartureTime()+"\n Ücret: "+list.get(position).getTravelFare()+"₺\n Süre: "+list.get(position).getTravelTime()+" saat");
         builder.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Log.d("onClick1", "onClick: 1");
                 dialog.dismiss();
                 AlertDialog.Builder builder2=new AlertDialog.Builder(BusTicketsActivity.this);
                 builder2.setTitle("Onaylanan bilet bilgileri");
@@ -112,9 +115,12 @@ public class BusTicketsActivity extends AppCompatActivity implements BusTicketsA
                 builder2.setNeutralButton("Tamam", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Log.d("onClick2", "onClick: 2");
                         dialog.dismiss();
                     }
                 });
+                AlertDialog alert2=builder2.create();
+                alert2.show();
             }
         });
 
@@ -124,5 +130,7 @@ public class BusTicketsActivity extends AppCompatActivity implements BusTicketsA
                 dialog.dismiss();
             }
         });
+        AlertDialog alert=builder.create();
+        alert.show();
     }
 }

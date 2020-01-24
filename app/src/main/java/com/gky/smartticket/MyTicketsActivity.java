@@ -26,6 +26,7 @@ public class MyTicketsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tickets);
+        Log.d("MyTicketsActivity", "onCreate: ");
 
         final RecyclerView recyclerView=findViewById(R.id.tickets_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
